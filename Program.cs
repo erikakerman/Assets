@@ -44,7 +44,10 @@ class Program
         Console.WriteLine("\nAsset List:");
         foreach (var asset in assets)
         {
-            Console.WriteLine($"{asset.Brand} {asset.ModelName}, Purchased: {asset.PurchaseDate.ToShortDateString()}, Price: {asset.Price}");
+            Console.WriteLine($"{asset.Brand} {asset.ModelName}, " +
+                              $"Purchased: {asset.PurchaseDate.ToShortDateString()}, " +
+                              $"Price: {asset.Price}, " +
+                              $"End of Life: {asset.EndOfLife.ToShortDateString()}");
         }
     }
 }
