@@ -11,7 +11,7 @@ class Program
         // Main loop for user input
         while (true)
         {
-            Console.WriteLine("Enter asset type (Computer/Phone) or 'exit' to quit:");
+            Console.Write("Asset type (Computer/Phone): ");
             string assetType = Console.ReadLine();
 
             // Check if user wants to exit
@@ -22,7 +22,7 @@ class Program
             Console.Write("Brand: ");
             string brand = Console.ReadLine();
 
-            Console.Write("Model Name: ");
+            Console.Write("Model: ");
             string modelName = Console.ReadLine();
 
             Console.Write("Purchase Date (yyyy-MM-dd): ");
@@ -40,14 +40,22 @@ class Program
             Console.WriteLine("Asset added.\n");
         }
 
-        // Display all assets
-        Console.WriteLine("\nAsset List:");
+        // Display all assets in a table format
+        Console.WriteLine("{0,-10} {1,-10} {2,-15} {3,-10} {4,-15} {5,-15}",
+            "Type", "Brand", "Model", "Price", "Purchase Date", "Expiration Date");
+        Console.WriteLine(new string('-', 80)); // Print a line of dashes
+
+        // Iterate through all assets and display their information
         foreach (var asset in assets)
         {
-            Console.WriteLine($"{asset.Brand} {asset.ModelName}, " +
-                              $"Purchased: {asset.PurchaseDate.ToShortDateString()}, " +
-                              $"Price: {asset.Price}, " +
-                              $"End of Life: {asset.EndOfLife.ToShortDateString()}");
+            string type = asset is Computer ? "Computer" : "Phone";
+            Console.WriteLine("{0,-10} {1,-10} {2,-15} {3,-10} {4,-15:MM/dd/yyyy} {5,-15:MM/dd/yyyy}",
+                type,
+                asset.Brand,
+                asset.ModelName,
+                asset.Price,
+                asset.PurchaseDate,
+                asset.EndOfLife);
         }
     }
 }

@@ -5,7 +5,6 @@ public class Computer : Asset
     public Computer(string brand, string modelName, DateTime purchaseDate, int price)
         : base(brand, modelName, purchaseDate, price)
     {
-        // The base keyword calls the constructor of the parent Asset class
     }
 }
 
@@ -16,6 +15,5 @@ public class Phone : Asset
     public Phone(string brand, string modelName, DateTime purchaseDate, int price)
         : base(brand, modelName, purchaseDate, price)
     {
-        // The base keyword calls the constructor of the parent Asset class
     }
 }

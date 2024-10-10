@@ -8,7 +8,7 @@ public class Asset
     public string ModelName { get; set; }
     public DateTime PurchaseDate { get; set; }
     public int Price { get; set; }
-    public DateTime EndOfLife { get; set; }  // New property for end of life
+    public DateTime EndOfLife { get; set; }
 
     // Constructor to initialize an asset
     public Asset(string brand, string modelName, DateTime purchaseDate, int price)
@@ -17,6 +17,6 @@ public class Asset
         ModelName = modelName;
         PurchaseDate = purchaseDate;
         Price = price;
-        EndOfLife = purchaseDate.AddYears(3);  // Set end of life to 3 years from purchase date
+        EndOfLife = purchaseDate.AddYears(3); // Set end of life to 3 years from purchase date
     }
 }
