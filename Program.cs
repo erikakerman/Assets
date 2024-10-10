@@ -1,41 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
 
-// File: Program.cs
 class Program
 {
     static void Main()
     {
-        // Initialize a list to store assets
+        // Create a list to store all assets
         List<Asset> assets = new List<Asset>();
 
+        // Main loop for user input
         while (true)
         {
-            // Ask for user input
-            Console.Write("Enter asset name (or 'exit' to quit): ");
-            string name = Console.ReadLine();
+            Console.WriteLine("Enter asset type (Computer/Phone) or 'exit' to quit:");
+            string assetType = Console.ReadLine();
 
-            // Check if the user wants to exit
-            if (name.ToLower() == "exit")
+            // Check if user wants to exit
+            if (assetType.ToLower() == "exit")
                 break;
 
-            // If not exiting, ask for the value
-            Console.Write("Enter asset value: ");
-            string value = Console.ReadLine();
+            // Get asset details from user
+            Console.Write("Brand: ");
+            string brand = Console.ReadLine();
 
-            // Create a new Asset object and add it to the list
-            Asset asset = new Asset(name, value);
-            assets.Add(asset);
+            Console.Write("Model Name: ");
+            string modelName = Console.ReadLine();
 
-            Console.WriteLine($"Added {name} with value {value} to the assets.");
-            Console.WriteLine(); // Print a blank line for readability
+            Console.Write("Purchase Date (yyyy-MM-dd): ");
+            DateTime purchaseDate = DateTime.Parse(Console.ReadLine());
+
+            Console.Write("Price: ");
+            int price = int.Parse(Console.ReadLine());
+
+            // Create and add the appropriate asset type
+            if (assetType.ToLower() == "computer")
+                assets.Add(new Computer(brand, modelName, purchaseDate, price));
+            else if (assetType.ToLower() == "phone")
+                assets.Add(new Phone(brand, modelName, purchaseDate, price));
+
+            Console.WriteLine("Asset added.\n");
         }
 
-        // Print the final list of assets
-        Console.WriteLine("\nYour assets:");
+        // Display all assets
+        Console.WriteLine("\nAsset List:");
         foreach (var asset in assets)
         {
-            Console.WriteLine($"Name: {asset.Name}, Value: {asset.Value}");
+            Console.WriteLine($"{asset.Brand} {asset.ModelName}, Purchased: {asset.PurchaseDate.ToShortDateString()}, Price: {asset.Price}");
         }
     }
 }

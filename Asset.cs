@@ -1,15 +1,20 @@
 ﻿using System;
 
-// File: Asset.cs
+// Base class for all assets
 public class Asset
 {
-    public string Name { get; set; }
-    public string Value { get; set; }
+    // Properties to store asset information
+    public string Brand { get; set; }
+    public string ModelName { get; set; }
+    public DateTime PurchaseDate { get; set; }
+    public int Price { get; set; }
 
-    // Constructor to create an asset
-    public Asset(string name, string value)
+    // Constructor to initialize an asset
+    public Asset(string brand, string modelName, DateTime purchaseDate, int price)
     {
-        Name = name;
-        Value = value;
+        Brand = brand;
+        ModelName = modelName;
+        PurchaseDate = purchaseDate;
+        Price = price;
     }
 }
