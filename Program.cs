@@ -48,7 +48,15 @@ class Program
         // Iterate through all assets and display their information
         foreach (var asset in assets)
         {
-            string type = asset is Computer ? "Computer" : "Phone";
+            string type;
+            if (asset.GetType() == typeof(Computer))
+            {
+                type = "Computer";
+            }
+            else
+            {
+                type = "Phone";
+            }
             Console.WriteLine("{0,-10} {1,-10} {2,-15} {3,-10} {4,-15:MM/dd/yyyy} {5,-15:MM/dd/yyyy}",
                 type,
                 asset.Brand,
